@@ -1,0 +1,12 @@
+[Unit]
+Description=Display and Print(future) those lap times 
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=sudo /usr/local/lap-timer-satellite/laptimersatellite.py  
+
+[Install]
+WantedBy=multi-user.target
+

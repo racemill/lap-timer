@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+echo "Starting live tail of lap timer satellite log"
+echo "............................................."
+
+tail -f /var/log/lap-timer-satellite.log
+
