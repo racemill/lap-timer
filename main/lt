@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+echo "Starting live tail of /var/log/beam.log to see the lap times"
+
+tail -f /var/log/beam.log
+

@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>Lap Timer</title>
+
+		<style>
+
+		body {
+			background: url("https://wallpapertag.com/wallpaper/full/6/d/3/468928-mountain-bike-wallpaper-1920x1080-for-meizu.jpg");
+		  	//background: url(trail.jpg);
+		}
+
+		#main {
+			background: rgba(0, 0, 0, 0);
+			height: 320px;
+			overflow: hidden;
+		}
+
+		.center {
+			text-align: center;
+			width: 75%;
+			color: black;
+			font-size: 24px;
+		}
+		.dropbtn {
+		  background: rgba(0, 0, 0, 0);
+		  color: red;
+		  padding: 0px 50px;
+		  font-size: 28px;
+		  border: none;
+		  cursor: pointer;
+
+		}
+
+		.dropbtn:hover, .dropbtn:focus {
+		  background-color:black;
+		}
+
+		.laplists {
+			//background: rgba(0, 0, 0, 0.1);
+			//border: 4px solid black;
+			color: black;
+			display: flex;
+ 		}
+
+		</style>
+
+		<script>
+			// This function is called to send a POST request 
+			// in order to tell the server to ring the bell
+			function sendRingRequest() {
+				
+				// Set up ajax request
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					var currentNotifs = document.getElementById("bellnotifs").innerHTML;
+
+					// Upon receiving 200 from server, notify user that bell has been rung
+					if (this.readyState == 4 && this.status == 200) {
+						var newNotifs = "</br>Valid Beam Break    ";
+						document.getElementById("bellnotifs").innerHTML = newNotifs + currentNotifs;
+					} 
+
+					// Upon receiving 428 from server, notify user that bell has not been rung
+					if (this.readyState == 4 && this.status == 429) {
+						var newNotifs = "</br>Invalid Beam Break";
+						document.getElementById("bellnotifs").innerHTML = newNotifs + currentNotifs;
+					}
+
+				};
+
+				xhttp.open("POST", "ring", true);
+				xhttp.send();
+			}
+		</script>
+	</head>
+
+	<center>
+	<body>
+
+		<div class="center" id="main">
+
+			<h1 style="font-size:58"> Lap Timer - Yard Loop </h1>
+
+			<button class="dropbtn" type="button" onclick="sendRingRequest()">SIMULATE BEAM BREAK</button>
+
+			<p class="center" id="bellnotifs"></p>
+			<!-- Notifications will display here -->
+
+		</div>
+
+		<div class="laplists">
+
+			<div>
+			<h3>Mountain Bike</h3>
+			<ol>
+			  <li><pre>Marc Miller  1:20</pre></li>
+			  <li><pre>Jacob Miller 1:22</pre></li>
+			  <li><pre>Ryan Miller  1:31</pre></li>
+			</ol> 
+			</div>
+
+			<div>
+			<h3>Running</h3>
+			<ol>
+			  <li><pre>Ryan Miller 1:29</pre></li>
+			  <li><pre>Marathon Man    </pre></li>
+			  <li><pre>Forrest Gump    </pre></li>
+			</ol>
+			</div>
+
+			<div>
+			<h3>Fat Bike</h3>
+			<ol>
+			  <li><pre>Midnight Rider</pre></li>
+			  <li><pre>Easy Rider    </pre></li>
+			  <li><pre>Ghost Rider   </pre></li>
+			</ol>
+			</div>
+		</div>
+		
+	</body>
+	</center>
+</html>

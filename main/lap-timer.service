@@ -1,0 +1,12 @@
+[Unit]
+Description=Time that Lap
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=7
+ExecStart=sudo /usr/local/lap-timer/laptimerserver.py  
+
+[Install]
+WantedBy=multi-user.target
+

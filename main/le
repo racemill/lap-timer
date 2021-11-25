@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+sudo sh -c "echo 'Now on course: $1' >> /var/log/beam.log"
+
+
